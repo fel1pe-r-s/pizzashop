@@ -95,7 +95,7 @@ export function OrdersDetails({ open, orderId }: OrderDetailsProps) {
             <TableBody>
               {order.orderItems.map((item) => (
                 <TableRow>
-                  <TableCell>Pizza Peperone Familía</TableCell>
+                  <TableCell>{item.product.name}</TableCell>
                   <TableCell className="text-right">{item.quantity}</TableCell>
                   <TableCell className="text-right">
                     {(item.priceInCents / 100).toLocaleString("pt-BR", {
