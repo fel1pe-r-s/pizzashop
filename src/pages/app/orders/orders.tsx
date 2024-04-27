@@ -13,6 +13,7 @@ import { useQuery } from "@tanstack/react-query";
 import { getOrders } from "@/api/get-orders";
 import { useSearchParams } from "react-router-dom";
 import { z } from "zod";
+import { MetricCardSkeleton } from "./order-table-skeleton";
 
 export function Orders() {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -68,10 +69,13 @@ export function Orders() {
                 </TableRow>
               </TableHeader>
               <TableBody>
-                {result &&
+                {result ? (
                   result.orders.map((order) => (
                     <OrderTableRow key={order.orderId} order={order} />
-                  ))}
+                  ))
+                ) : (
+                  <MetricCardSkeleton />
+                )}
               </TableBody>
             </Table>
           </div>
